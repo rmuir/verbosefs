@@ -46,15 +46,20 @@ public class PrintStreamInfoStream extends InfoStream {
   
   @Override
   public void message(String component, String message) {
-    stream.println(component + " " + messageID + " [" + getTimestamp() + "; " + Thread.currentThread().getName() + "]: " + message);
+    // build message and call print once, so stacks are not interleaved from multiple threads.
+    StringBuilder sb = new StringBuilder();
+    sb.append(component + " " + messageID + " [" + getTimestamp() + "; " + Thread.currentThread().getName() + "]: " + message);
+    sb.append('\n');
     StackTraceElement stack[] = Thread.currentThread().getStackTrace();
     for (StackTraceElement frame : stack) {
       if (filterFrame(frame)) {
         continue;
       }
-      stream.print("\tat ");
-      stream.println(frame);
+      sb.append("\tat ");
+      sb.append(frame);
+      sb.append('\n');
     }
+    stream.print(sb.toString());
   }
   
   private boolean filterFrame(StackTraceElement frame) {
