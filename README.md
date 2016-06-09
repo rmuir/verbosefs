@@ -22,7 +22,7 @@ FS 0 [2016-06-08T05:28:10.829Z; elasticsearch[Rock Python][clusterService#update
 ```
 
 # Enable VerboseFS
-1. Download the jar: https://github.com/rmuir/verbosefs/releases/download/1.0/verbosefs.jar
+1. Download the jar: https://github.com/rmuir/verbosefs/releases/download/1.1/verbosefs.jar
 2. Put this jar in the application classpath
 3. You must pass this argument to the **JVM**: `-Djava.nio.file.spi.DefaultFileSystemProvider=rmuir.VerboseFS`
 
@@ -30,7 +30,7 @@ FS 0 [2016-06-08T05:28:10.829Z; elasticsearch[Rock Python][clusterService#update
 To log to a file instead, also pass this argument to the **JVM** `-Dverbosefs.logfile=/somewhere/file.txt`
 
 # Elasticsearch users
-1. Download the jar: https://github.com/rmuir/verbosefs/releases/download/1.0/verbosefs.jar
+1. Download the jar: https://github.com/rmuir/verbosefs/releases/download/1.1/verbosefs.jar
 2. Put jar in elasticsearch `lib` folder (alongside elasticsearch-2.3.1.jar or whatever)
 3. Start elasticsearch, specifying options in `ES_JAVA_OPTS` environment variable.
 
